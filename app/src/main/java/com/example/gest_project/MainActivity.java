@@ -1,7 +1,6 @@
 package com.example.gest_project;
 
 import android.app.ProgressDialog;
-//import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.example.gest_project.databinding.ActivityMainBinding;
@@ -11,19 +10,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Handler;
-import android.os.Looper;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,10 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     ActivityMainBinding binding;
-    ArrayList<Model> modelList;
-    ArrayAdapter<Model> listAdapter;
-    Handler mainHandler = new Handler();
-    ProgressDialog progressDialog;
 
     List<Model>model = new ArrayList<>();
 
@@ -59,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     private FloatingActionButton floatingActionButton;
+    //private Button annulationButton;
 
     //Json link
     private static String JSON_URL = "https://run.mocky.io/v3/a8de9313-9fbe-46b5-80e3-2b37e85f50a5";
@@ -70,15 +62,15 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        model.add(new Model(001,img,"Projet1","Boss1", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
-        model.add(new Model(001,img,"Projet2","Boss2", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"));
-        model.add(new Model(001,img,"Projet3","Boss3", "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"));
-        model.add(new Model(001,img,"Projet4","Boss4", "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"));
-        model.add(new Model(001,img,"Projet5","Boss5", "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"));
-        model.add(new Model(001,img,"Projet6","Boss6", "fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"));
-        model.add(new Model(001,img,"Projet7","Boss7", "ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"));
-        model.add(new Model(001,img,"Projet8","Boss8", "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"));
-        model.add(new Model(001,img,"Projet9","Boss9", "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"));
+        model.add(new Model(1,img,"Projet1","Chef1", "Desciption"));
+        model.add(new Model(2,img,"Projet2","Chef2", "Desciption"));
+        model.add(new Model(3,img,"Projet3","Chef3", "Desciption"));
+        model.add(new Model(4,img,"Projet4","Chef4", "Desciption"));
+        model.add(new Model(5,img,"Projet5","Chef5", "Desciption"));
+        model.add(new Model(6,img,"Projet6","Chef6", "Desciption"));
+        model.add(new Model(7,img,"Projet7","Chef7", "Desciption"));
+        model.add(new Model(8,img,"Projet8","Chef8", "Desciption"));
+        model.add(new Model(9,img,"Projet9","Chef9", "Desciption"));
 
         final ListView listView = findViewById(R.id.recycleView);
         listView.setAdapter(new Adaptery(this, model));
@@ -98,14 +90,14 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        /*View annulationButton = findViewById(R.id.annul);
+        /*Button annulationButton = findViewById(R.id.annul);
         annulationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 annuler();
             }
         });
-
+/*
         View ConfrmationButton = findViewById(R.id.conf);
         ConfrmationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,6 +198,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void annuler() {
+        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
     }
 

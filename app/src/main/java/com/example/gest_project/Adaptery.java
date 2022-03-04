@@ -67,7 +67,7 @@ public class Adaptery extends ArrayAdapter<Model> {
         TextView project_name = convertView.findViewById(R.id.nom);
         TextView the_description = convertView.findViewById(R.id.descrip);
         TextView chef_pro = convertView.findViewById(R.id.boss);
-        //TextView identifiant = convertView.findViewById(R.id.id);
+        TextView identifiant = convertView.findViewById(R.id.id);
 
 
 
@@ -75,7 +75,7 @@ public class Adaptery extends ArrayAdapter<Model> {
         project_name.setText(NamePro);
         the_description.setText(DescPro);
         chef_pro.setText(ChefPro);
-        //identifiant.setText(IdPro);
+        identifiant.setId(IdPro);
 
         return convertView;
     }
